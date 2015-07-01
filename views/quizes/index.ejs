@@ -1,0 +1,9 @@
+<div class="pull-right">Total de preguntas <strong><%= quizes.length %></strong></div>
+
+<ul>
+  <% quizes.forEach(function(quiz){ %>
+    <li><a href="quizes/<%= quiz.id %>"><%= quiz.pregunta %></a></li>
+  <% }); %>
+</ul>
+
+<div class="clearfix"></div>
