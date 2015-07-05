@@ -1,9 +1,24 @@
-<div class="pull-right">Total de preguntas <strong><%= quizes.length %></strong></div>
 
-<ul>
-  <% quizes.forEach(function(quiz){ %>
-    <li><a href="quizes/<%= quiz.id %>"><%= quiz.pregunta %></a></li>
-  <% }); %>
-</ul>
+<div class="pull-left">
+  <form action="/quizes" method="get" class="form-inline" id="form">
+   <div class="form-group">
+     <div class="input-group">
+       <div class="input-group-addon"><strong>Buscador</strong></div>
+       <input type="text" class="form-control" name="search" value="<%= search %>" id="buscador" placeholder="Buscar por...">
+       <div class="input-group-addon"><span onclick="javascript: document.getElementById('form').submit();" class="glyphicon glyphicon-search"></span></div>
+       <div class="input-group-addon"><a href="/quizes"><span class="glyphicon glyphicon-remove"></span></a></div>
+     </div>
+   </div>
+ </form>
+</div>
+<div class="pull-right">Total de preguntas <strong><%= quizes.length %></strong></div>
+<div class="clearfix"></div>
+<div class="col-sm-12 jumbotron" style="margin-top: 12px;">
+  <ul>
+    <% quizes.forEach(function(quiz){ %>
+      <li><a href="quizes/<%= quiz.id %>"><%= quiz.pregunta %></a></li>
+    <% }); %>
+  </ul>
+</div>
 
 <div class="clearfix"></div>

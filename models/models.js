@@ -43,6 +43,30 @@ sequelize.sync().success(function(){
       Quiz.create({
         pregunta: '¿Capital de Portugal?',
         respuesta: 'lisboa'
+      });
+      Quiz.create({
+        pregunta: '¿Capital de España?',
+        respuesta: 'madrid'
+      });
+      Quiz.create({
+        pregunta: '¿Capital de Alemania?',
+        respuesta: 'berlin'
+      });
+      Quiz.create({
+        pregunta: '¿Capital de Francia?',
+        respuesta: 'paris'
+      });
+      Quiz.create({
+        pregunta: '¿Capital de Holanda?',
+        respuesta: 'ámsterdam'
+      });
+      Quiz.create({
+        pregunta: '¿Capital de Bélgica?',
+        respuesta: 'brujas'
+      });
+      Quiz.create({
+        pregunta: '¿Capital de Suiza?',
+        respuesta: 'berna'
       })
       .success(function(){ console.log('Base de datos inicializada'); });
     }
