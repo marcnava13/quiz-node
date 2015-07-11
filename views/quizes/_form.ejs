@@ -1,0 +1,10 @@
+<div class="form-group">
+    <label for="preg">Pregunta</label>
+    <input type="text" class="form-control" id="preg" placeholder="Enunciado" name="quiz[pregunta]" value="<%= quiz.pregunta %>" >
+</div>
+<div class="form-group">
+    <label for="resp">Respuesta</label>
+    <input type="text" class="form-control" id="resp" placeholder="Respuesta" name="quiz[respuesta]" value="<%= quiz.respuesta %>" >
+</div>
+<input class="btn btn-success" type="submit" value="Guardar" />
+<a class="btn btn-danger" href="/quizes">Cancelar</a>
