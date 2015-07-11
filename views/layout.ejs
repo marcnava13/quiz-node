@@ -28,6 +28,14 @@
       </nav>
 
       <section class="main" id="s1">
+        <% if(errors.length){ %>
+          <div class="system-message-error alert alert-danger">
+            <h4>Error</h4>
+            <% for(var i in errors){ %>
+              <p><%= errors[i].message %></p>
+            <% } %>
+          </div>
+        <% } %>
         <%- body %>
       </section>
       <hr/>
