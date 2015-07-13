@@ -21,7 +21,15 @@
 <div class="col-sm-12 jumbotron" style="margin-top: 12px;">
   <ul>
     <% quizes.forEach(function(quiz){ %>
-      <li><a href="quizes/<%= quiz.id %>"><%= quiz.pregunta %></a>&nbsp;&nbsp;<a href="quizes/<%= quiz.id %>/edit">Editar</a></li>
+      <li>
+        <a href="quizes/<%= quiz.id %>"><%= quiz.pregunta %></a>&nbsp;&nbsp;
+        <a href="quizes/<%= quiz.id %>/edit" class="btn btn-warnign">Editar</a>
+        <form method="post" class="col-sm-2 pull-right" action="quizes/<%= quiz.id %>?_method=delete">
+          <button type="submit" class="btn btn-danger" onclick="javascript: return confirm('Borrar: <%= quiz.pregunta %>')">
+            Borrar
+          </button>
+        </form>
+      </li>
     <% }); %>
   </ul>
 </div>
