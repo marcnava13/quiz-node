@@ -6,5 +6,15 @@
     <label for="resp">Respuesta</label>
     <input type="text" class="form-control" id="resp" placeholder="Respuesta" name="quiz[respuesta]" value="<%= quiz.respuesta %>" >
 </div>
+<div class="form-group">
+  <label for="cat">Categoría</label>
+  <select class="form-control" id="cat" name="quiz[tema]">
+    <option <%= (quiz.tema == "otro") ? "selected" : "" %> value="otro" selected>Otro</option>
+    <option <%= (quiz.tema == "humanidades") ? "selected" : "" %> value="humanidades">Humanidades</option>
+    <option <%= (quiz.tema == "ocio") ? "selected" : "" %> value="ocio">Ocio</option>
+    <option <%= (quiz.tema == "ciencia") ? "selected" : "" %> value="ciencia">Ciencia</option>
+    <option <%= (quiz.tema == "tecnologia") ? "selected" : "" %> value="tecnologia">Tecnología</option>
+  </select>
+</div>
 <input class="btn btn-success" type="submit" value="Guardar" />
 <a class="btn btn-danger" href="/quizes">Cancelar</a>

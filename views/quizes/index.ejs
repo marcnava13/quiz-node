@@ -19,19 +19,29 @@
 <div class="pull-right">Total de preguntas <strong><%= quizes.length %></strong></div>
 <div class="clearfix"></div>
 <div class="col-sm-12 jumbotron" style="margin-top: 12px;">
-  <ul>
+  <table class="col-sm-12">
+    <tr>
+      <th class="text-center">Pregunta</th>
+      <th class="text-center">Categoría</th>
+      <th class="text-center" colspan="2">Acciones</th>
+      <th class="text-center">ID</th>
+    </tr>
     <% quizes.forEach(function(quiz){ %>
-      <li>
-        <a href="quizes/<%= quiz.id %>"><%= quiz.pregunta %></a>&nbsp;&nbsp;
-        <a href="quizes/<%= quiz.id %>/edit" class="btn btn-warnign">Editar</a>
-        <form method="post" class="col-sm-2 pull-right" action="quizes/<%= quiz.id %>?_method=delete">
-          <button type="submit" class="btn btn-danger" onclick="javascript: return confirm('Borrar: <%= quiz.pregunta %>')">
-            Borrar
-          </button>
-        </form>
-      </li>
+      <tr>
+        <td><a href="quizes/<%= quiz.id %>"><%= quiz.pregunta %></a></td>
+        <td class="text-center"><%= quiz.tema %></td>
+        <td class="text-center"><a href="quizes/<%= quiz.id %>/edit" class="btn btn-warning">Editar</a></td>
+        <td class="text-center">
+          <form method="post" action="quizes/<%= quiz.id %>?_method=delete">
+            <button type="submit" class="btn btn-danger" onclick="javascript: return confirm('Borrar: <%= quiz.pregunta %>')">
+              Borrar
+            </button>
+          </form>
+        </td>
+        <td class="text-center"><%= quiz.id %></td>
+      </tr>
     <% }); %>
-  </ul>
+  </table>
 </div>
 
 <div class="clearfix"></div>
