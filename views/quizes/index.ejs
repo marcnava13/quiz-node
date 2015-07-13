@@ -21,7 +21,7 @@
 <div class="col-sm-12 jumbotron" style="margin-top: 12px;">
   <ul>
     <% quizes.forEach(function(quiz){ %>
-      <li><a href="quizes/<%= quiz.id %>"><%= quiz.pregunta %></a></li>
+      <li><a href="quizes/<%= quiz.id %>"><%= quiz.pregunta %></a>&nbsp;&nbsp;<a href="quizes/<%= quiz.id %>/edit">Editar</a></li>
     <% }); %>
   </ul>
 </div>
