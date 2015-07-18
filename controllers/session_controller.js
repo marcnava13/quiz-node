@@ -34,3 +34,12 @@ exports.destroy = function(req, res){
   delete req.session.user;
   res.redirect('/quizes');
 };
+
+// MW de autorización de accesos HTTP restringuidos
+exports.loginRequired = function(req, res, next){
+  if(req.session.user){
+    next();
+  }else{
+    res.redirect('login');
+  }
+};

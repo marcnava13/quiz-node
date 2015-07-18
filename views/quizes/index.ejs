@@ -1,7 +1,8 @@
-<nav class="nav nav-pills">
-  <a href="/quizes/new" class="btn btn-success">Nuevo</a>
-</nav>
-
+<% if(session.user){ %>
+  <nav class="nav nav-pills">
+    <a href="/quizes/new" class="btn btn-success">Nuevo</a>
+  </nav>
+<% } %>
 <hr/>
 
 <div class="pull-left">
@@ -23,21 +24,25 @@
     <tr>
       <th class="text-center">Pregunta</th>
       <th class="text-center">Categoría</th>
-      <th class="text-center" colspan="2">Acciones</th>
+      <% if(session.user){ %>
+        <th class="text-center" colspan="2">Acciones</th>
+      <% } %>
       <th class="text-center">ID</th>
     </tr>
     <% quizes.forEach(function(quiz){ %>
       <tr>
         <td><a href="quizes/<%= quiz.id %>"><%= quiz.pregunta %></a></td>
         <td class="text-center"><%= quiz.tema %></td>
-        <td class="text-center"><a href="quizes/<%= quiz.id %>/edit" class="btn btn-warning">Editar</a></td>
-        <td class="text-center">
-          <form method="post" action="quizes/<%= quiz.id %>?_method=delete">
-            <button type="submit" class="btn btn-danger" onclick="javascript: return confirm('Borrar: <%= quiz.pregunta %>')">
-              Borrar
-            </button>
-          </form>
-        </td>
+        <% if(session.user){ %>
+          <td class="text-center"><a href="quizes/<%= quiz.id %>/edit" class="btn btn-warning">Editar</a></td>
+          <td class="text-center">
+            <form method="post" action="quizes/<%= quiz.id %>?_method=delete">
+              <button type="submit" class="btn btn-danger" onclick="javascript: return confirm('Borrar: <%= quiz.pregunta %>')">
+                Borrar
+              </button>
+            </form>
+          </td>
+        <% } %>
         <td class="text-center"><%= quiz.id %></td>
       </tr>
     <% }); %>
