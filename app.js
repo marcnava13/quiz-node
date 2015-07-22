@@ -31,6 +31,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Helpers dinámicos
 app.use(function(req, res, next){
 
+  if(req.session.autoLogout != undefined){
+    var d = new Date();
+    var timeCurrent = (d.getMinutes() * 60) + d.getSeconds();
+
+    var closeSession = req.session.autoLogout - timeCurrent;
+
+    if(closeSession == 0){
+      delete req.session.user;
+      delete req.session.autologout;
+      res.redirect('/quizes');
+    }
+  }
+
   // guardar path en session.redir para después de login
   if(!req.path.match(/\/login|\/logout/)){
     req.session.redir = req.path;
@@ -38,6 +51,7 @@ app.use(function(req, res, next){
 
   // Hacer visible req.session en las vistas
   res.locals.session = req.session;
+
   next();
 });
 

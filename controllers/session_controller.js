@@ -25,6 +25,10 @@ exports.create = function(req, res){
     // La sesión se define por la existencia de: req.session.user
     req.session.user = {id:user.id, username: user.username};
 
+    var d = new Date();
+    var autoLogout = (d.getMinutes() * 60) + d.getSeconds() + ( 2 * 60 );
+    req.session.autoLogout = autoLogout;
+
     res.redirect('/quizes');
   });
 };
@@ -32,6 +36,7 @@ exports.create = function(req, res){
 // DELETE /logout  -- Desturir sesión
 exports.destroy = function(req, res){
   delete req.session.user;
+  delete req.session.autologout;
   res.redirect('/quizes');
 };
 
