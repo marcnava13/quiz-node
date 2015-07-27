@@ -2,15 +2,14 @@ var path = require('path');
 
 // Postgres DATABASE_URL = postgress:://user:passwd@host:port/DATABASE_URL
 // SQLite DATABASE_URL = sqlite://:@/
-var database = "postgres://qglpolkgqivwlo:VMIIigBM1hjpo7qkux9gfQFSka@ec2-54-204-13-220.compute-1.amazonaws.com:5432/d3qb4uevsb6fv1";
-var url = database.match(/(.*)\:\/\/(.*?)\:(.*)@(.*)\:(.*)\/(.*)/);
+var url = process.env.DATABASE_URL.match(/(.*)\:\/\/(.*?)\:(.*)@(.*)\:(.*)\/(.*)/);
 var DB_name   = (url[6]||null);
 var user      = (url[2]||null);
 var pwd       = (url[3]||null);
 var protocol  = (url[1]||null);
 var dialect   = (url[1]||null);
-var host      = (url[5]||null);
-var port      = (url[4]||null);
+var host      = (url[4]||null);
+var port      = (url[5]||null);
 var storage   = process.env.DATABASE_STORAGE;
 
 // Cargar Modelo ORM
