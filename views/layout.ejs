@@ -1,57 +1,85 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Quiz</title>
-    <link rel='stylesheet' href='/css/bootstrap.min.css' />
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-  </head>
-  <body>
-    <div class="container">
-      <header class="jumbotron">
-        <h2>Quiz: el juego de las preguntas</h2>
-        <div class="pull-right">
-          <% if(!session.user){ %>
-            <span class=""><a href="/login">Login</a></span>
-          <% }else{ %>
-            <span class="">Bienvenido <strong><%= session.user.username %></strong>&nbsp;&nbsp;<a href="/logout">Logout</a></span>
+<html lang="en" hola_ext_inject="disabled"><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
+  <title>Starter Template - Materialize</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
+<style type="text/css"></style></head>
+<body>
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Quiz: el juego de las preguntas</a>
+      <ul class="right hide-on-med-and-down">
+        <% if(!session.user){ %>
+          <li><a href="/login">Login</a></li>
+        <% }else{ %>
+          <li>Bienvenido <strong><%= session.user.username %></strong>&nbsp;&nbsp;<a href="/logout">Logout</a></li>
+        <% } %>
+        <li><a href="">Inicio</a></li>
+        <li><a href="/quizes">Preguntas</a></li>
+        <li><a href="/author">Créditos</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav" style="left: -250px;">
+        <% if(!session.user){ %>
+          <li><a href="/login">Login</a></li>
+        <% }else{ %>
+          <li><a href="/logout">Bienvenido <strong><%= session.user.username %></strong>,&nbsp;&nbsp;logout</a></li>
+        <% } %>
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/quizes">Preguntas</a></li>
+        <li><a href="/author">Créditos</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="section col l3 s12">
+      <% if(errors.length){ %>
+        <div class="toast">
+          <h4>Error</h4>
+          <% for(var i in errors){ %>
+            <p><%= errors[i].message %></p>
           <% } %>
         </div>
-      </header>
-
-      <nav class="navbar navbar-default" role="navigation">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="/">
-              Inicio
-            </a>
-          </div>
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="/quizes">Preguntas</a></li>
-              <li class="active"><a href="/author">Créditos</a></li>
-            </ul>
-          </div>
-       </div>
-      </nav>
-
-      <section class="main" id="s1">
-        <% if(errors.length){ %>
-          <div class="system-message-error alert alert-danger">
-            <h4>Error</h4>
-            <% for(var i in errors){ %>
-              <p><%= errors[i].message %></p>
-            <% } %>
-          </div>
-        <% } %>
-        <%- body %>
-      </section>
-      <hr/>
-      <footer class="main" id="f1">
-        <a target="_blank" href="http://es.wikipedia.org/wiki/Quiz">¿Qué es un Quiz?</a>
-        <a href="https://github.com/marcnava13/quiz-node" class="btn btn-default pull-right">Ver en Github</a>
-      </footer>
+      <% } %>
+      <%- body %>
     </div>
-    <script type='text/javascript' href='/js/bootstrap.min.js'></script>
-    <script type='text/javascript' href='/js/jquery-2.1.4.min.js'></script>
-  </body>
-</html>
+  </div>
+
+  <footer class="page-footer black">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Marcos Navarro</h5>
+          <p class="grey-text text-lighten-4"><a class="btn-large waves-effect waves-light red" href="http://es.wikipedia.org/wiki/Quiz" target="_blank">¿Qué es Quiz?</a></p>
+
+
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Puedes encontrar el código en Github</h5>
+          <ul>
+            <li><a class="btn-large waves-effect waves-light red" href="https://github.com/marcnava13/quiz-node">Ir a Github</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Está web utiliza <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="/js/materialize.js"></script>
+  <script src="/js/init.js"></script>
+
+  
+
+<div class="hiddendiv common"></div><div class="drag-target" style="touch-action: pan-y; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); left: 0px;"></div></body></html>

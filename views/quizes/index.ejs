@@ -1,20 +1,20 @@
 <% if(session.user){ %>
-  <nav class="nav nav-pills">
-    <a href="/quizes/new" class="btn btn-success">Nuevo</a>
-  </nav>
+  <a href="/quizes/new" class="btn">Nuevo</a>
 <% } %>
 <hr/>
 
 <div class="pull-left">
-  <form action="/quizes" method="get" class="form-inline" id="form">
-   <div class="form-group">
-     <div class="input-group">
-       <div class="input-group-addon"><strong>Buscador</strong></div>
-       <input type="text" class="form-control" name="search" value="<%= search %>" id="buscador" placeholder="Buscar por...">
-       <div class="input-group-addon"><span onclick="javascript: document.getElementById('form').submit();" class="glyphicon glyphicon-search"></span></div>
-       <div class="input-group-addon"><a href="/quizes"><span class="glyphicon glyphicon-remove"></span></a></div>
-     </div>
-   </div>
+  <form action="/quizes" method="get" class="col s12" id="form">
+  <div class="row">
+    <div class="input-field col s6">
+      <input id="last_name" type="text" name="search" value="<%= search %>" id="buscador" class="validate">
+      <label for="last_name">Buscar por...</label>
+    </div>
+    <div class="input-field col s6">
+      <i onclick="javascript: document.getElementById('form').submit();" class="material-icons">search</i>
+      <a href="/quizes"><i class="material-icons">delete</i></a>
+    </div>
+  </div>
  </form>
 </div>
 <div class="pull-right">Total de preguntas <strong><%= quizes.length %></strong></div>
@@ -22,28 +22,28 @@
 <div class="col-sm-12 jumbotron" style="margin-top: 12px;">
   <table class="col-sm-12">
     <tr>
-      <th class="text-center">Pregunta</th>
-      <th class="text-center">Categoría</th>
+      <th class="center">Pregunta</th>
+      <th class="center">Categoría</th>
       <% if(session.user){ %>
-        <th class="text-center" colspan="2">Acciones</th>
+        <th class="center" colspan="2">Acciones</th>
       <% } %>
-      <th class="text-center">ID</th>
+      <th class="center">ID</th>
     </tr>
     <% quizes.forEach(function(quiz){ %>
       <tr>
         <td><a href="quizes/<%= quiz.id %>"><%= quiz.pregunta %></a></td>
-        <td class="text-center"><%= quiz.tema %></td>
+        <td class="center"><%= quiz.tema %></td>
         <% if(session.user){ %>
-          <td class="text-center"><a href="quizes/<%= quiz.id %>/edit" class="btn btn-warning">Editar</a></td>
-          <td class="text-center">
-            <form method="post" action="quizes/<%= quiz.id %>?_method=delete">
-              <button type="submit" class="btn btn-danger" onclick="javascript: return confirm('Borrar: <%= quiz.pregunta %>')">
+          <td class="center"><a href="quizes/<%= quiz.id %>/edit" class="btn orange">Editar</a></td>
+          <td class="center">
+            <form class="no-margin" method="post" action="quizes/<%= quiz.id %>?_method=delete">
+              <button type="submit" class="btn btn-red" onclick="javascript: return confirm('Borrar: <%= quiz.pregunta %>')">
                 Borrar
               </button>
             </form>
           </td>
         <% } %>
-        <td class="text-center"><%= quiz.id %></td>
+        <td class="center"><%= quiz.id %></td>
       </tr>
     <% }); %>
   </table>

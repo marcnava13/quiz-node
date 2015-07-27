@@ -48,14 +48,14 @@ sequelize.sync().then(function(){
       // la tabla se inicializa solo si esta está vacía
       Quiz.bulkCreate(
 				[
-					{pregunta: 'Capital de Italia', respuesta: 'roma'},
-					{pregunta: 'Capital de Portugal', respuesta: 'lisboa'},
-					{pregunta: 'Capital de España', respuesta: 'madrid'},
-					{pregunta: 'Capital de Alemania', respuesta: 'berlin'},
-					{pregunta: 'Capital de Francia', respuesta: 'paris'},
-					{pregunta: 'Capital de Holanda', respuesta: 'ámsterdam'},
-					{pregunta: 'Capital de Bélgica', respuesta: 'brujas'},
-					{pregunta: 'Capital de Suiza', respuesta: 'berna'},
+					{pregunta: 'Capital de Italia', respuesta: 'roma', tema: 'ocio' },
+					{pregunta: 'Capital de Portugal', respuesta: 'lisboa', tema: 'ocio' },
+					{pregunta: 'Capital de España', respuesta: 'madrid', tema: 'ocio' },
+					{pregunta: 'Capital de Alemania', respuesta: 'berlin', tema: 'ocio' },
+					{pregunta: 'Capital de Francia', respuesta: 'paris', tema: 'ocio' },
+					{pregunta: 'Capital de Holanda', respuesta: 'ámsterdam', tema: 'ocio' },
+					{pregunta: 'Capital de Bélgica', respuesta: 'brujas', tema: 'ocio' },
+					{pregunta: 'Capital de Suiza', respuesta: 'berna', tema: 'ocio' },
 
 				]
 			).then(function () {

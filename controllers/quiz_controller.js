@@ -26,9 +26,7 @@ exports.index = function(req, res){
       var criteria = "%" + search.replace(" ", "%") + "%";
       query = models.Quiz.findAll({where: ["pregunta like ?", criteria]});
     }
-    // query.then(function(quizes){
-    models.Quiz.findAll().then(
-      function(quizes){
+    query.then(function(quizes){
         res.render('quizes/index', { search: search, quizes: quizes, errors: [] });
     }).catch(function(error){ next(error); });
 };

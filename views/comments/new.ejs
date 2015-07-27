@@ -1,6 +1,6 @@
 <p>Añadir comentario:</p>
 
 <form method="post" action="/quizes/<%= quizId%>/comments/">
-  <input type="text" id="comment" name="comment[texto]" value="" />
-  <button btn="btn btn-success" type="submit">Publicar</button>
+  <input type="text" id="comment" name="comment[texto]" value="" required="required" />
+  <input class="btn" type="submit" value="Publicar" />
 </form>

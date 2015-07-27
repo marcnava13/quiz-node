@@ -12,7 +12,7 @@ exports.load = function(req, res, next, commentId){
       req.comment = comment;
       next();
     }else{
-      next(new Error('No existe commentId=' + commentId))
+      next(new Error('No existe commentId=' + commentId));
     }
   }).catch(function(error){next(error)});
 };
